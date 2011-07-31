@@ -57,6 +57,14 @@ Installation:
 
     sudo pip install -U xls2db
 
+Dependencies:
+-------------
+
+- xlrd
+- xlwt
+- plac (for command line args)
+
+
 Tests:
 ------
 
