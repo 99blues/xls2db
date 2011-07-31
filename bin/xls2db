@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+
+if __name__ == "__main__":
+    #Apparently this thing's pretty magical.
+    import plac
+    from xls2db import xls2db
+    plac.call(xls2db)
