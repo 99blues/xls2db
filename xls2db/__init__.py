@@ -37,7 +37,7 @@ def xls2db(infile, outfile):
             map_over = lambda l: lambda f: map(f, l)
             @map_over(row)
             def map_fxn(item):
-                if (item == xlrd.empty_cell.value):
+                if item == xlrd.empty_cell.value or item == u'':
                     return None
                 else:
                     return item
@@ -47,9 +47,9 @@ def xls2db(infile, outfile):
                 + ','.join(itertools.repeat('?', s.ncols)) +");", row)
 
     db_conn.commit()
-    db_cursor.close()
     #Only do this if we're not working on an externally-opened db
-    if type(outfile == string):
+    if type(outfile) == str:
+        db_cursor.close()
         db_conn.close()
 
 def db2xls(infile, outfile):
