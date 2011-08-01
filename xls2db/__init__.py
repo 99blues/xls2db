@@ -48,7 +48,9 @@ def xls2db(infile, outfile):
 
     db_conn.commit()
     db_cursor.close()
-    db_conn.close()
+    #Only do this if we're not working on an externally-opened db
+    if type(outfile == string):
+        db_conn.close()
 
 def db2xls(infile, outfile):
     """
