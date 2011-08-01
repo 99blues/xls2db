@@ -6,9 +6,23 @@ def xls2db(infile, outfile):
     """
     Convert an xls file into an sqlite db!
     """
-    wb = xlrd.open_workbook(infile)
-    db_conn = sqlite.connect(outfile)
-    db_cursor = db_conn.cursor()
+    #Now you can pass in a workbook!
+    if type(infile) == str:
+        wb = xlrd.open_workbook(infile)
+    elif type(infile) == xlrd.Book:
+        wb = infile
+    else:
+        raise TypeError
+
+    #Now you can pass in a sqlite connection!
+    if type(outfile) == str:
+        db_conn = sqlite.connect(outfile)
+        db_cursor = db_conn.cursor()
+    elif type(outfile) == sqlite.Connection:
+        db_conn = outfile
+        db_cursor = db_conn.cursor()
+    else:
+        raise TypeError
 
     for s in wb.sheets():
 
