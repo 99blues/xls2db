@@ -27,6 +27,17 @@ As a module::
     from xls2db import xls2db
     xls2db("infile.xls", "outfile.db")
 
+Alternately, you can use an instance of ``xlrd.Book`` instead of an .xls
+filename, and you can use an instance of ``sqlite3.Connection`` instead of an
+sqlite database filename. For example::
+
+    from xls2db import xls2db
+    import xlrd
+    import sqlite3 as sqlite
+
+    db = sqlite.connect(":memory:")
+    xls2db(xlrd.open_workbook("infile.xls"), db)
+
 
 Schema:
 -------
