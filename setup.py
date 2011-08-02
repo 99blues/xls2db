@@ -2,8 +2,10 @@ from distutils.core import setup
 
 setup(
     name = "xls2db",
-    version = "0.0.4",
+    version = "0.0.5",
     packages = ["xls2db"],
+    requires = ['xlrd', 'plac'],
+    install_requires = ['xlrd', 'plac'],
     description = "Convert excel files following a particular schema into sqlite database files.",
     author = "Joshua Holbrook",
     author_email = "josh.holbrook@gmail.com",
