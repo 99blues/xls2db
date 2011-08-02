@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name = "xls2db",
-    version = "0.0.3",
+    version = "0.0.4",
     packages = ["xls2db"],
     description = "Convert excel files following a particular schema into sqlite database files.",
     author = "Joshua Holbrook",
