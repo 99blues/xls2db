@@ -24,8 +24,7 @@ def xls2db(infile, outfile):
     else:
         raise TypeError
 
-    for s in wb.sheets():
-
+    for s in [s for s in wb.sheets() if s.ncols > 0 and s.nrows > 0]:
         # Create the table.
         # Vulnerable to sql injection because ? is only able to handle inserts
         # I'm not sure what to do about that!
